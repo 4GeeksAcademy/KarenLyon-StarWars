@@ -10,7 +10,7 @@ export const Home = () => {
 	if (!store.people.hasOwnProperty("results")) return console.log("no existe")
 	if (!store.vehicles.hasOwnProperty("results")) return console.log("no existe")
 
-	
+
 
 	return (
 		<div>

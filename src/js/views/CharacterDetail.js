@@ -9,17 +9,22 @@ export const CharacterDetail = ()=>{
     const params = useParams();
     const {actions, store} = useContext(Context)
 
-    useEffect(() => {actions.getCharacter(params.elementId)}) 
+   
 
-
+    useEffect(() => {
+      actions.getCharacter(params.elementId)
+      },[]) 
+    
+      const data = store.character?.result?.properties
+      console.log(data)
 
     return (
         <>
         <Card>
-          {store.character?.result.uid===params.characterId ? (
+        {store.character?.result?.uid===params.elementId ? (
             <> <Card.Img variant="top" src={`https://starwars-visualguide.com/assets/img/characters/${params.elementId}.jpg`}/>
           <Card.Body>
-            <p>name:{store.character.result.properties.name}</p>
+            <p>name: {data.name}</p>
             <Card.Text>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
