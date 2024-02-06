@@ -1,0 +1,30 @@
+body{
+        background-color: black;
+}
+
+.people{
+        width: 250px;
+        height: 350px;
+        margin: 20px;
+        background-color: gainsboro;
+        border-color: black;
+        padding-bottom: 10px;
+    }
+.imgPeople{
+        height: 260px;
+        object-fit: fill;
+}
+.planets{
+        width: 250px;
+        height: 350px;
+        margin: 20px;
+        background-color: gainsboro;
+        border-color: yellow;
+    }
+.vehicles{
+        width: 250px;
+        height: 350px;
+        margin: 20px;
+        background-color: gainsboro;
+        border-color: yellow;
+}
