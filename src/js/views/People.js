@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect} from "react";
+import React, { useContext, useRef, useEffect } from "react";
 import "../../styles/home.css";
 import Card from 'react-bootstrap/Card';
 import "flickity/css/flickity.css";
@@ -9,7 +9,7 @@ import Flickity from "flickity";
 export const People = () => {
     const { store, actions } = useContext(Context);
 
-       
+
     const flickityRef = useRef(null);
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export const People = () => {
         <div className="carousel carousel-people">
             {store.people.results.map((element) => (
                 <Card key={element.uid} className="people">
-                    <Card.Img className="imgPeople" variant="top" src={`https://starwars-visualguide.com/assets/img/characters/${element.uid}.jpg`} />
+                    <Card.Img className="imgAll" variant="top" src={`https://starwars-visualguide.com/assets/img/characters/${element.uid}.jpg`} />
                     <Card.Body>
                         <Card.Title>{element.name}</Card.Title>
                         <Link className="btn btn-primary" to={`/character/${element.uid}`}>Learn More</Link>

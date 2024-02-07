@@ -10,8 +10,8 @@ body{
         border-color: black;
         padding-bottom: 10px;
     }
-.imgPeople{
-        height: 260px;
+.imgAll{
+        height: 240px;
         object-fit: fill;
 }
 .planets{
@@ -19,12 +19,14 @@ body{
         height: 350px;
         margin: 20px;
         background-color: gainsboro;
-        border-color: yellow;
+        border-color: black;
+        padding-bottom: 10px;
     }
 .vehicles{
         width: 250px;
         height: 350px;
         margin: 20px;
         background-color: gainsboro;
-        border-color: yellow;
+        border-color: black;
+        padding-bottom: 10px;
 }

@@ -5,10 +5,12 @@ import "flickity/css/flickity.css";
 import Button from 'react-bootstrap/Button';
 import { Context } from "../store/appContext";
 import Flickity from "flickity";
+
+
 export const Vehicles = () => {
-	const { store, actions } = useContext(Context);
-	
-       
+    const { store, actions } = useContext(Context);
+
+
     const flickityRef = useRef(null);
 
     useEffect(() => {
@@ -29,17 +31,19 @@ export const Vehicles = () => {
         return <div>No hay resultados de personas</div>;
     }
 
+    console.log(store.vehicles.results)
+    return (
+        <div className="carousel-vehicles">
+            {store.vehicles.results.map((e) => (
+                <Card key={e.uid} style={{ width: '18rem' }} className="vehicles">
+                    <Card.Img className="imgAll" variant="top" src={`https://starwars-visualguide.com/assets/img/vehicles/${e.uid}.jpg`} />
+                    <Card.Body>
+                        <Card.Title>{e.name}</Card.Title>
+                        <Button variant="primary">Go somewhere</Button>
+                        <Button className="like" onClick={() => { actions.addFavorites(e.name) }} variant="primary"><i class="far fa-heart"></i></Button>
 
-	return (
-		<div className="carousel-vehicles">
-			{store.vehicles.results.map((e) => (
-				<Card key={e.uid} style={{ width: '18rem' }} className="vehicles">
-					<Card.Img variant="top" src={`https://starwars-visualguide.com/assets/img/vehicles/${e.uid}.jpg`} />
-					<Card.Body>
-						<Card.Title>{e.name}</Card.Title>
-						<Button variant="primary">Go somewhere</Button>
-					</Card.Body>
-				</Card>
-			))}
-		</div>)
+                    </Card.Body>
+                </Card>
+            ))}
+        </div>)
 }
