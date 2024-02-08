@@ -1,32 +1,68 @@
-body{
+body {
         background-color: black;
+        font-family: 'Anton', sans-serif;
 }
 
-.people{
-        width: 250px;
+.people {
+        width: 200px;
         height: 350px;
-        margin: 20px;
-        background-color: gainsboro;
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 150px;
+        background-color: rgb(50, 49, 49);
         border-color: black;
-        padding-bottom: 10px;
-    }
-.imgAll{
+        color: white;
+        border-radius: 0%;
+
+}
+
+.imgAll {
         height: 240px;
         object-fit: fill;
+        width: 200px;
+        border-radius: 0;
 }
-.planets{
-        width: 250px;
+
+.imgPlanet {
+        border-radius: 50%;
+        object-fit: fill;
+        height: 240px;
+
+}
+
+.planets {
+        width: 200px;
         height: 350px;
-        margin: 20px;
-        background-color: gainsboro;
+        margin: 40px;
+        margin-top: 80px;
+        background-color: black;
         border-color: black;
-        padding-bottom: 10px;
-    }
-.vehicles{
-        width: 250px;
+        color: white;
+        border-radius: 0%;
+
+}
+
+.vehicles {
+        width: 200px;
         height: 350px;
-        margin: 20px;
-        background-color: gainsboro;
+        margin: 40px;
+        margin-top: 80px;
+        background-color: rgb(50, 49, 49);
         border-color: black;
-        padding-bottom: 10px;
+        color: white;
+        border-radius: 0%;
+
+}
+
+
+.like {
+        margin-left: 8px;
+        background-color: black;
+        border-color: red;
+
+}
+
+
+.btn {
+        margin-top: 10px;
 }

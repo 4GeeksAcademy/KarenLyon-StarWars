@@ -5,11 +5,11 @@ import "flickity/css/flickity.css";
 import Button from 'react-bootstrap/Button';
 import { Context } from "../store/appContext";
 import Flickity from "flickity";
+import { Link } from "react-router-dom";
 
 
 export const Vehicles = () => {
     const { store, actions } = useContext(Context);
-
 
     const flickityRef = useRef(null);
 
@@ -28,22 +28,22 @@ export const Vehicles = () => {
     }, [store.vehicles]);
 
     if (!store.vehicles || !store.vehicles.results) {
-        return <div>No hay resultados de personas</div>;
+        return <div>No hay resultados de vehículos</div>;
     }
 
     console.log(store.vehicles.results)
     return (
         <div className="carousel-vehicles">
             {store.vehicles.results.map((e) => (
-                <Card key={e.uid} style={{ width: '18rem' }} className="vehicles">
+                <Card key={e.uid} className="vehicles">
                     <Card.Img className="imgAll" variant="top" src={`https://starwars-visualguide.com/assets/img/vehicles/${e.uid}.jpg`} />
                     <Card.Body>
                         <Card.Title>{e.name}</Card.Title>
-                        <Button variant="primary">Go somewhere</Button>
-                        <Button className="like" onClick={() => { actions.addFavorites(e.name) }} variant="primary"><i class="far fa-heart"></i></Button>
-
+                        <Link className="btn btn-light btn-sm" to={`/vehicles/${e.uid}`}>Learn More</Link>
+                        <Button className="like" onClick={() => { actions.addFavorite(e.name) }} variant="danger"><i className="far fa-heart"></i></Button>
                     </Card.Body>
                 </Card>
             ))}
-        </div>)
-}
+        </div>
+    );
+};

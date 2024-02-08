@@ -5,6 +5,7 @@ import "flickity/css/flickity.css";
 import Button from 'react-bootstrap/Button';
 import { Context } from "../store/appContext";
 import Flickity from "flickity";
+import { Link } from "react-router-dom";
 
 export const Planets = () => {
     const { store, actions } = useContext(Context);
@@ -32,11 +33,13 @@ export const Planets = () => {
     return (
         <div className="carousel carousel-planets">
             {store.planets.results.map((e) => (
-                <Card key={e.uid} style={{ width: '18rem' }} className="planets">
-                    <Card.Img className="imgAll" variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${e.uid}.jpg`} />
+                <Card key={e.uid} className="planets">
+                    <Card.Img className="imgPlanet" variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${e.uid}.jpg`} />
                     <Card.Body>
                         <Card.Title>{e.name}</Card.Title>
-                        <Button variant="primary">Go somewhere</Button>
+                        <Link className="btn btn-light btn-sm" to={`/planets/${e.uid}`}>Learn More</Link>
+                        <Button className="like" onClick={() => { actions.addFavorite(e.name) }} variant="danger"><i className="far fa-heart"></i></Button>
+
                     </Card.Body>
                 </Card>
             ))}

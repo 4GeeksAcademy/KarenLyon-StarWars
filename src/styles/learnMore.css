@@ -1,0 +1,30 @@
+.PeopleDetails {
+    background-image: url("https://cdn.wallpapersafari.com/11/39/C6fdj9.jpg");
+    background-size: cover;
+}
+
+.detailImg {
+    float: left;
+    width: 300px;
+    height: 380px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.details {
+    margin-top: 100px;
+}
+
+ul {
+    list-style: none;
+}
+
+.description {
+    color: white;
+}
+
+.properties {
+    color: rgba(255, 255, 0, 0.784);
+    margin-right: 20px;
+    margin-bottom: 25px;
+}
