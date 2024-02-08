@@ -19,7 +19,7 @@ export const PeopleDetails = () => {
 
   return (
 
-    <div >
+    <div className="background">
       {store.peopleDetails?.result?.uid === params.elementId ? (
         <div className="details">
           <> <img className="detailImg" variant="top" src={`https://starwars-visualguide.com/assets/img/characters/${params.elementId}.jpg`} />
