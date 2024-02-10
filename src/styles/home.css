@@ -8,7 +8,7 @@ body {
         height: 350px;
         margin-left: 40px;
         margin-right: 40px;
-        margin-top: 150px;
+        margin-top: 100px;
         background-color: rgb(50, 49, 49);
         border-color: black;
         color: white;
@@ -24,7 +24,6 @@ body {
 }
 
 .imgPlanet {
-        border-radius: 50%;
         object-fit: fill;
         height: 240px;
 

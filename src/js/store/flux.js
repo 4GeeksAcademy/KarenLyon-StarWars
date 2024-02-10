@@ -68,8 +68,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((response) => { setStore({ planetsDetails: response }) })
 			},
 
+			addFavorites: (name) => {
+				setStore({ favorites: [...getStore().favorites, name] })
+			},
 
-
+			removeFavorite: (id) => {
+				setStore({
+					favorites: getStore().favorites.filter((e, i) => {
+						return i != id;
+					})
+				})
+			},
 
 
 

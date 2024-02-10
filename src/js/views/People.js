@@ -41,7 +41,7 @@ export const People = () => {
                     <Card.Body>
                         <Card.Title>{element.name}</Card.Title>
                         <Link className="btn btn-light btn-sm" to={`/character/${element.uid}`}>Learn More</Link>
-                        <Button className="like btn-sm" onClick={() => { actions.addFavorite(e.name) }} variant="danger"><i className="far fa-heart"></i></Button>
+                        <Button className="like btn-sm" onClick={() => { actions.addFavorites(element.name) }} variant="danger"><i className="far fa-heart"></i></Button>
 
                     </Card.Body>
                 </Card>

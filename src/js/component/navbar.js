@@ -8,7 +8,7 @@ import "../../styles/navbar.css";
 
 
 export const Navbar = () => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	return (
 		<nav className="navbar navbar-dark bg-dark">
@@ -18,13 +18,19 @@ export const Navbar = () => {
 			<div className="ml-auto favoritesButton">
 				<DropdownButton id="dropdown-basic-button" title="Favoritos">
 					{store.favorites.length > 0 ? (
-						store.favorites.map((favorite, index) => (
-							<Dropdown.Item key={index} href={`#${favorite}`}>{favorite}</Dropdown.Item>
+						store.favorites.map((item, index) => (
+							<Dropdown.Item key={index} className="d-flex align-items-center">
+								<span>{item.name}</span>
+								<button type="button" className="btn btn-outline-danger me-2" onClick={() => actions.removeFavorite(index)}>
+									<i className="fa fa-trash"></i>
+								</button>
+							</Dropdown.Item>
 						))
 					) : (
 						<Dropdown.Item disabled>No hay favoritos</Dropdown.Item>
 					)}
 				</DropdownButton>
+
 			</div>
 		</nav>
 	);

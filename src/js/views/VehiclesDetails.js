@@ -19,19 +19,29 @@ export const VehiclesDetails = () => {
   console.log(data)
 
   return (
-    <>
-      <Card className="details">
-        {store.vehiclesDetails?.result?.uid === params.elementId ? (
-          <> <Card.Img variant="top" style={{ height: '70px', width: '70px' }} src={`https://starwars-visualguide.com/assets/img/characters/${params.elementId}.jpg`} />
-            <Card.Body>
-              <p>name: {data.name}</p>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-            </Card.Body></>) : (<h3>Cargando</h3>)}
-
-      </Card></>
+    <div className="background">
+      {store.vehiclesDetails?.result?.uid === params.elementId ? (
+        <div className="details">
+          <> <img className="detailImg" variant="top" src={`https://starwars-visualguide.com/assets/img/vehicles/${params.elementId}.jpg`} />
+            <ul className="description">
+              <li className="d-flex"><h3 className="properties">Model :</h3>
+                <h3> {data.model} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Class : </h3>
+                <h3> {data.vehicle_class} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Manufacturer : </h3>
+                <h3> {data.manufacturer} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Cost In Credits : </h3>
+                <h3> {data.cost_in_credits} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Lenght : </h3>
+                <h3> {data.length} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Crew : </h3>
+                <h3> {data.crew} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Passengers : </h3>
+                <h3> {data.passengers} </h3> </li>
+            </ul>
+          </> </div>) : (<h3>Cargando</h3>)
+      }
+    </div>
   );
 }
 

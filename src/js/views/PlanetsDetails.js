@@ -19,19 +19,29 @@ export const PlanetsDetails = () => {
   console.log(data)
 
   return (
-    <>
-      <Card className="details">
-        {store.planetsDetails?.result?.uid === params.elementId ? (
-          <> <Card.Img className="imgAllDetails" variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${params.elementId}.jpg`} />
-            <Card.Body>
-              <p>name: {data.name}</p>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-              </Card.Text>
-            </Card.Body></>) : (<h3>Cargando</h3>)}
-
-      </Card></>
+    <div className="background">
+      {store.planetsDetails?.result?.uid === params.elementId ? (
+        <div className="details">
+          <> <img className="detailImg" variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${params.elementId}.jpg`} />
+            <ul className="description">
+              <li className="d-flex"><h3 className="properties">Diameter :</h3>
+                <h3> {data.diameter} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Rotation Period : </h3>
+                <h3> {data.rotation_period} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Orbital Period : </h3>
+                <h3> {data.orbital_period} </h3> </li>
+              <li className="d-flex"><h3 className="properties"> Population : </h3>
+                <h3> {data.population} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Climate : </h3>
+                <h3> {data.climate} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Terrain : </h3>
+                <h3> {data.terrain} </h3> </li>
+              <li className="d-flex"><h3 className="properties">Surface Water : </h3>
+                <h3> {data.surface_water} </h3> </li>
+            </ul>
+          </> </div>) : (<h3>Cargando</h3>)
+      }
+    </div>
   );
 }
 
