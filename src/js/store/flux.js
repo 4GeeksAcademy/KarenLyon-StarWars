@@ -9,7 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			peopleDetails: [],
 			vehiclesDetails: [],
 			planetsDetails: [],
-			favorites: [],
+			favorites: JSON.parse(localStorage.getItem("favorites")) || [],
 		},
 		actions: {
 			getAllPeople: () => {
@@ -68,17 +68,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((response) => { setStore({ planetsDetails: response }) })
 			},
 
-			addFavorites: (name) => {
-				setStore({ favorites: [...getStore().favorites, name] })
+			addFavorites: name => {
+				const { favorites } = getStore();
+				if (favorites.includes(name)) {
+					alert("¡El nombre ya está en la lista de favoritos!");
+				} else {
+					const updatedFavorites = [...favorites, name];
+					localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+					setStore({ favorites: updatedFavorites });
+				}
+			},
+			removeFavorite: name => {
+				const { favorites } = getStore();
+				const updatedFavorites = favorites.filter(favorite => favorite !== name);
+				localStorage.setItem("favorites", JSON.stringify(updatedFavorites)); // Guardar favoritos actualizados en el almacenamiento local
+				setStore({ favorites: updatedFavorites });
 			},
 
-			removeFavorite: (id) => {
-				setStore({
-					favorites: getStore().favorites.filter((e, i) => {
-						return i != id;
-					})
-				})
-			},
+
 
 
 

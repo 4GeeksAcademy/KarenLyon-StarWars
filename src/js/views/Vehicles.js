@@ -31,7 +31,7 @@ export const Vehicles = () => {
         return <div>No hay resultados de vehículos</div>;
     }
 
-    console.log(store.vehicles.results)
+
     return (
         <div className="carousel-vehicles">
             {store.vehicles.results.map((e) => (
@@ -40,7 +40,7 @@ export const Vehicles = () => {
                     <Card.Body>
                         <Card.Title>{e.name}</Card.Title>
                         <Link className="btn btn-light btn-sm" to={`/vehicles/${e.uid}`}>Learn More</Link>
-                        <Button className="like" onClick={() => { actions.addFavorite(e.name) }} variant="danger"><i className="far fa-heart"></i></Button>
+                        <Button className="like" onClick={() => { e.preventDefault(); actions.addFavorite(e.name) }} variant="danger"><i className="far fa-heart"></i></Button>
                     </Card.Body>
                 </Card>
             ))}

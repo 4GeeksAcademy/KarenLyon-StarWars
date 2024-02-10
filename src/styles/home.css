@@ -53,14 +53,31 @@ body {
 
 }
 
-
 .like {
         margin-left: 8px;
-        background-color: black;
-        border-color: red;
-
+        background-color: transparent;
+        border: 0;
+        font-size: 20px;
+        color: white;
 }
 
+.like.active {
+        color: red;
+        cursor: default;
+        background-color: transparent;
+}
+
+.like:hover {
+        background-color: transparent;
+}
+
+.like:active,
+.like:focus {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        color: red;
+        /* Cambia el color del corazón a rojo */
+}
 
 .btn {
         margin-top: 10px;

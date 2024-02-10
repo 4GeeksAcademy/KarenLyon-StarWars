@@ -1,14 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
 
-
-
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const [dropdownOpen, setDropdownOpen] = useState(false);
+
+	const toggleDropdown = () => {
+		setDropdownOpen(!dropdownOpen);
+	};
+
+	const handleRemoveFavorite = (name, e) => {
+		e.stopPropagation(); // Detener la propagación del evento para evitar que el dropdown se cierre
+		actions.removeFavorite(name);
+	};
 
 	return (
 		<nav className="navbar navbar-dark bg-dark">
@@ -16,12 +24,17 @@ export const Navbar = () => {
 				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Star_Wars_Logo..png/100px-Star_Wars_Logo..png" alt="Star Wars Logo" />
 			</Link>
 			<div className="ml-auto favoritesButton">
-				<DropdownButton id="dropdown-basic-button" title="Favoritos">
+				<DropdownButton
+					id="dropdown-basic-button"
+					title="Favoritos"
+					show={dropdownOpen}
+					onClick={toggleDropdown}
+				>
 					{store.favorites.length > 0 ? (
-						store.favorites.map((item, index) => (
+						store.favorites.map((name, index) => (
 							<Dropdown.Item key={index} className="d-flex align-items-center">
-								<span>{item.name}</span>
-								<button type="button" className="btn btn-outline-danger me-2" onClick={() => actions.removeFavorite(index)}>
+								<span>{name}</span>
+								<button type="button" className="btn btn-outline-danger ms-3 me-2" onClick={(e) => handleRemoveFavorite(name, e)}>
 									<i className="fa fa-trash"></i>
 								</button>
 							</Dropdown.Item>
@@ -30,7 +43,6 @@ export const Navbar = () => {
 						<Dropdown.Item disabled>No hay favoritos</Dropdown.Item>
 					)}
 				</DropdownButton>
-
 			</div>
 		</nav>
 	);
