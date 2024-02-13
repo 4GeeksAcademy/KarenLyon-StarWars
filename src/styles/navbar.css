@@ -1,20 +1,30 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    
-  }
-  .favoritesButton{
-    margin-right: 10px;
-    }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 
-    .footer {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      height: 50px;
-      background-color: #333; /* Color de fondo del footer */
-      color: white; /* Color del texto del footer */
-      text-align: center; /* Alineación del texto en el centro */
-  }
+}
+
+.favoritesButton {
+  margin-right: 10px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #333;
+  /* Color de fondo del footer */
+  color: white;
+  /* Color del texto del footer */
+  text-align: center;
+  /* Alineación del texto en el centro */
+}
+
+#dropdown-basic-button {
+  background-color: yellow;
+  color: black;
+  border-color: black;
+}

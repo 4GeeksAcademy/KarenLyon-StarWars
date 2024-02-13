@@ -14,6 +14,7 @@ export const Navbar = () => {
 	};
 
 	const handleRemoveFavorite = (name, e) => {
+		e.preventDefault();
 		e.stopPropagation(); // Detener la propagación del evento para evitar que el dropdown se cierre
 		actions.removeFavorite(name);
 	};

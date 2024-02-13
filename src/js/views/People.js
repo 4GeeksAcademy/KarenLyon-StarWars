@@ -36,6 +36,8 @@ export const People = () => {
         }
     };
 
+
+
     if (!store.people || !store.people.results) {
         return <div>No hay resultados de personas</div>;
     }

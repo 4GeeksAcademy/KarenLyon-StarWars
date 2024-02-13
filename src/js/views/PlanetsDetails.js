@@ -22,7 +22,10 @@ export const PlanetsDetails = () => {
     <div className="background">
       {store.planetsDetails?.result?.uid === params.elementId ? (
         <div className="details">
-          <> <img className="detailImg" variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${params.elementId}.jpg`} />
+          <> <img className="detailImg" variant="top" src={`https://starwars-visualguide.com/assets/img/planets/${params.elementId}.jpg`} onError={(e) => {
+            e.target.src = 'https://th.bing.com/th/id/OIG3.oDE7UySGHN.uI4PBKYpl?w=1024&h=1024&rs=1&pid=ImgDetMain';
+          }}
+            alt="Imagen no encontrada" />
             <ul className="description">
               <li className="d-flex"><h3 className="properties">Diameter :</h3>
                 <h3> {data.diameter} </h3> </li>

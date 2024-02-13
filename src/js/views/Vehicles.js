@@ -11,7 +11,10 @@ import { Link } from "react-router-dom";
 export const Vehicles = () => {
     const { store, actions } = useContext(Context);
 
+    const isFavorite = (name) => store.favorites.includes(name);
+
     const flickityRef = useRef(null);
+
 
     useEffect(() => {
         if (!store.vehicles.hasOwnProperty("results")) return console.log("no existe");
@@ -27,11 +30,18 @@ export const Vehicles = () => {
         };
     }, [store.vehicles]);
 
+
+    const toggleFavorite = (name) => {
+        if (isFavorite(name)) {
+            actions.removeFavorite(name); // Pasar el nombre directamente
+        } else {
+            actions.addFavorites(name);
+        }
+    };
+
     if (!store.vehicles || !store.vehicles.results) {
         return <div>No hay resultados de vehículos</div>;
     }
-
-
     return (
         <div className="carousel-vehicles">
             {store.vehicles.results.map((e) => (
@@ -40,7 +50,12 @@ export const Vehicles = () => {
                     <Card.Body>
                         <Card.Title>{e.name}</Card.Title>
                         <Link className="btn btn-light btn-sm" to={`/vehicles/${e.uid}`}>Learn More</Link>
-                        <Button className="like" onClick={() => { e.preventDefault(); actions.addFavorite(e.name) }} variant="danger"><i className="far fa-heart"></i></Button>
+                        <Button
+                            className={`like btn-sm ${isFavorite(e.name) ? 'active' : ''}`}
+                            onClick={() => toggleFavorite(e.name)}
+                        >
+                            {isFavorite(e.name) ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i>}
+                        </Button>
                     </Card.Body>
                 </Card>
             ))}
