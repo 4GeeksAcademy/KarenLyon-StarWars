@@ -28,3 +28,9 @@
   color: black;
   border-color: black;
 }
+
+.favoritesLength {
+  color: rgba(220, 220, 220, 0.79);
+  margin-left: 15px;
+  margin-top: 10px;
+}

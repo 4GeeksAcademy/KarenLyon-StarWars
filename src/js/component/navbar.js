@@ -4,6 +4,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton';
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
+import { DropdownItem } from "react-bootstrap";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -19,6 +20,7 @@ export const Navbar = () => {
 		actions.removeFavorite(name);
 	};
 
+
 	return (
 		<nav className="navbar navbar-dark bg-dark">
 			<Link to="/">
@@ -27,24 +29,29 @@ export const Navbar = () => {
 			<div className="ml-auto favoritesButton">
 				<DropdownButton
 					id="dropdown-basic-button"
-					title="Favoritos"
+					title="Favorites"
 					show={dropdownOpen}
 					onClick={toggleDropdown}
 				>
-					{store.favorites.length > 0 ? (
-						store.favorites.map((name, index) => (
-							<Dropdown.Item key={index} className="d-flex align-items-center">
-								<span>{name}</span>
-								<button type="button" className="btn btn-outline-danger ms-3 me-2" onClick={(e) => handleRemoveFavorite(name, e)}>
-									<i className="fa fa-trash"></i>
-								</button>
-							</Dropdown.Item>
-						))
+					{store.favorites.map((name, index) => (
+						<Dropdown.Item key={index} className="d-flex align-items-center">
+							<span>{name}</span>
+							<button type="button" className="btn btn-outline-danger ms-3 me-2" onClick={(e) => handleRemoveFavorite(name, e)}>
+								<i className="fa fa-trash"></i>
+							</button>
+						</Dropdown.Item>
+					))}
+					{store.favorites.length === 0 ? (
+						<Dropdown.Item disabled>Add Favorites</Dropdown.Item>
 					) : (
-						<Dropdown.Item disabled>No hay favoritos</Dropdown.Item>
+						<p className="favoritesLength">
+							{store.favorites.length === 1 ?
+								`${store.favorites.length} Favorite` :
+								`${store.favorites.length} Favorites`}
+						</p>
 					)}
 				</DropdownButton>
 			</div>
-		</nav>
+		</nav >
 	);
 };
